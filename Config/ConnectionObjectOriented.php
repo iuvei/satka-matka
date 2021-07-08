@@ -64,9 +64,9 @@ class connection implements connection_declare {
 
 }
 
-$dbname = "satka-matka";
-$username = "root";
-$password = "";
+$dbname = "u326868981_satka_matka";
+$username = "u326868981_satka_matka";
+$password = "|LCy[Bs3";
 
 // $dbname = "u326868981_rxceswa";
 // $username = "u326868981_rxceswa";

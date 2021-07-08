@@ -20,14 +20,10 @@ if (isset($_POST["api_key"]) && isset($_POST["loginid"])) {
     echo json_encode(array("error" => "Invalid API Key Or Logged in user id"));
     die();
 }
-if (isset($_REQUEST["colval"])) {
-    $column = $_REQUEST['column'];
-    if($_REQUEST['tbname'] == "periods"){
-        $query = "select * from " . $_REQUEST['tbname'] . " where $column='" . $_REQUEST['colval']."' and number is not null  order by id desc limit 0, 15";
-       
-    }else{
-        $query = "select * from " . $_REQUEST['tbname'] . " where $column='" . $_REQUEST['colval']."' order by id desc";
-    }
+if (isset($_REQUEST["game_types_id"])) {
+    $game_types_id = $_REQUEST['game_types_id'];
+    $user_id = $_REQUEST['loginid'];
+    $query = "select joinings.price,periods.period,periods.number as win_number,joinings.number as my_number,joinings.color as my_color,periods.result from joinings join periods on periods.id = joinings.periods_id where joinings.user_id = $user_id and joinings.game_types_id = $game_types_id and periods.number is not null order by periods.period desc limit 15";
     
     $result = $conn->query($query);
     $data = array();

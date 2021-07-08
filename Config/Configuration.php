@@ -34,7 +34,8 @@ class Configuration
       // "notifications" => array("id" => "int:11: PRIMARY KEY AUTO_INCREMENT", "name" => "text"),
       // "number_game_rules" => array("id" => "int:11: PRIMARY KEY AUTO_INCREMENT", "profit" => "float"),
       // "wallet_transactions" => array("id" => "int:11: PRIMARY KEY AUTO_INCREMENT", "amount" => "float", "txn_type" => "varchar:50", "description" => "varchar:250", "created_at" => "timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP","updated_at" => "timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP",),
-      "periods" => array("id" => "int:11: PRIMARY KEY AUTO_INCREMENT","period" => "int:11: AUTO_INCREMENT", "price" => "float", "nuumber" => "int:11", "result" => "varchar:250", "created_at" => "timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP","updated_at" => "timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP",),
+    //   "periods" => array("id" => "int:11: PRIMARY KEY AUTO_INCREMENT","period" => "int:11: AUTO_INCREMENT", "price" => "float", "nuumber" => "int:11", "result" => "varchar:250", "created_at" => "timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP","updated_at" => "timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP",),
+      "joinings" => array("id" => "int:11: PRIMARY KEY AUTO_INCREMENT","price" => "float", "nuumber" => "int:11", "color" => "varchar:25", "created_at" => "timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP"),
       
 
     );
@@ -59,7 +60,12 @@ class Configuration
       // "user" => "complaints:cascade:cascade",
       // "user" => "userbankdetail:cascade:cascade",
       // "game_colors" => "game_rules:cascade:cascade",
-      "user" => "wallet_transactions:cascade:cascade",
+    //   "user" => "wallet_transactions:cascade:cascade",
+    //   "user" => "joinings:cascade:cascade",
+    //   "periods" => "joinings:cascade:cascade",
+    //   "game_types" => "joinings:cascade:cascade",
+    //   "game_types" => "periods:cascade:cascade",
+      "periods" => "wallet_transactions:cascade:cascade",
       
     );
     return $rtable;

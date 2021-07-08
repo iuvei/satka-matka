@@ -34,7 +34,7 @@ if (isset($_POST["loginid"])) {
     if ($tbname == "user") {
         $location = "../img/user/";
     } 
-
+    
     unset($_POST["tbname"]);
     $info = $db->insert($_POST, $tbname);
 

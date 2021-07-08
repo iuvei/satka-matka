@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include '../../../Config/ConnectionObjectOriented.php';
 include '../../../Config/DB.php';
@@ -20,22 +19,14 @@ if (isset($_POST["api_key"]) && isset($_POST["loginid"])) {
     echo json_encode(array("error" => "Invalid API Key Or Logged in user id"));
     die();
 }
-if (isset($_REQUEST["colval"])) {
-    $column = $_REQUEST['column'];
-    if($_REQUEST['tbname'] == "periods"){
-        $query = "select * from " . $_REQUEST['tbname'] . " where $column='" . $_REQUEST['colval']."' and number is not null  order by id desc limit 0, 15";
-       
-    }else{
-        $query = "select * from " . $_REQUEST['tbname'] . " where $column='" . $_REQUEST['colval']."' order by id desc";
-    }
-    
-    $result = $conn->query($query);
-    $data = array();
-    $i = 0;
-    while ($row = $result->fetch_assoc()) {
-        $data[$i] = $row;
-        $i++;
-    }
-    $string = json_encode($data, JSON_UNESCAPED_SLASHES);
-    echo $string;
-}
+
+$query = "select * from periods order by id desc";
+$result = $conn->query($query);
+$data = array();
+$i = 0;
+$row = $result->fetch_assoc();
+    $data[$i] = $row;
+    $i++;
+
+$string = json_encode($data, JSON_UNESCAPED_SLASHES);
+echo $string;

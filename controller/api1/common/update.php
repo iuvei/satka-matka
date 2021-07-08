@@ -2,7 +2,6 @@
 session_start();
 include '../../../Config/ConnectionObjectOriented.php';
 include '../../../Config/DB.php';
-include '../../../Config/Mail.php';
 $db = new DB($conn);
 //$info = array();
 $location = "../img";
